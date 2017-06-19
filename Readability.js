@@ -382,9 +382,9 @@ Readability.prototype = {
     this._removeNodes(doc.getElementsByTagName("style"));
     
     // Remove all linked stylesheets
-    var links = articleContent.getElementsByTagName("link");
+    var links = doc.getElementsByTagName("link");
     this._forEachNode(links, function(link) {
-      var rel = img.getAttribute("rel");
+      var rel = link.getAttribute("rel");
       if (rel === "stylesheet") {
         link.parentNode.removeChild(link);
       }
