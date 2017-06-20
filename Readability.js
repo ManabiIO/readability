@@ -380,6 +380,15 @@ Readability.prototype = {
 
     // Remove all style tags in head
     this._removeNodes(doc.getElementsByTagName("style"));
+    
+    // Remove all linked stylesheets
+    var links = doc.getElementsByTagName("link");
+    this._forEachNode(links, function(link) {
+      var rel = link.getAttribute("rel");
+      if (rel === "stylesheet") {
+        link.parentNode.removeChild(link);
+      }
+    });
 
     if (doc.body) {
       this._replaceBrs(doc.body);
