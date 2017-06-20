@@ -1176,7 +1176,7 @@ Readability.prototype = {
   },
 
   /**
-   * Removes script tags from the document.
+   * Removes script tags from the document and the onload attribute from the body element.
    *
    * @param Element
   **/
@@ -1187,6 +1187,7 @@ Readability.prototype = {
       return true;
     });
     this._removeNodes(doc.getElementsByTagName('noscript'));
+    doc.body.removeAttribute('onload');
   },
 
   /**
