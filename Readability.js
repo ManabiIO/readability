@@ -815,7 +815,12 @@ Readability.prototype = {
         contentScore += 1;
 
         // Add points for any commas within this paragraph.
-        contentScore += innerText.split(',').length;
+	var commas = [',', '、'];
+	for (var comma in commas) {
+	  if (commas.hasOwnProperty(comma)) {
+            contentScore += innerText.split(comma).length;
+	  }
+	}
 
         // For every 100 characters in this paragraph, add another point. Up to 3 points.
         contentScore += Math.min(Math.floor(innerText.length / 100), 3);
